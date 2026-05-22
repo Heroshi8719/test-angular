@@ -1,0 +1,24 @@
+<div style="max-width: 500px; margin: 40px auto; font-family: sans-serif;">
+  <h2>Gestione prodotti</h2>
+
+  <div style="background: #f4f4f4; padding:20px; 
+  border-radius: 8px; margin-bottom:20px;">
+    <h3> Aggiungi Nuovo Prodotto</h3>
+    <div style="margin-bottom:10px;">
+      <label>Nome prodotto:</label><br>
+      <input type="text" [(ngModel)]="nuovoNome" style="width:100%;
+      padding:8px; margin-top:5px;">
+    </div>
+    <div style="margin-bottom: 15px">
+      <label>Prezzo:</label><br>
+      <input type="number" [(ngModel)]="nuovoPrezzo" 
+      style="width: 100%; padding:8px;">
+    </div>
+    <button (click)="salva()" style="background: #007bff; color:white;
+    border:none; padding:10px 15px; border-radius: 4px; cursor: pointer;">
+  Invia al database  
+  </button>
+  </div> 
+</div>
+
+
