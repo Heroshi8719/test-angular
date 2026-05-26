@@ -1,0 +1,74 @@
+[
+  {
+    "id": "b1",
+    "categoria": "Bevande",
+    "nome": "Acqua Minerale",
+    "descrizione": "Naturale o Frizzante 50cl",
+    "prezzo": 1.00,
+    "immagine": "assets/img/acqua.jpg"
+  },
+  {
+    "id": "b2",
+    "categoria": "Bevande",
+    "nome": "Coca Cola",
+    "descrizione": "Lattina da 33cl",
+    "prezzo": 2.50,
+    "immagine": "assets/img/cocacola.jpg"
+  },
+  {
+    "id": "b3",
+    "categoria": "Bevande",
+    "nome": "Aranciata",
+    "descrizione": "Lattina da 33cl in vetro",
+    "prezzo": 2.50,
+    "immagine": "assets/img/aranciata.jpg"
+  },
+  {
+    "id": "c1",
+    "categoria": "Caffetteria",
+    "nome": "Caffè Espresso",
+    "descrizione": "Miscela 100% Arabica",
+    "prezzo": 1.20,
+    "immagine": "assets/img/caffe.jpg"
+  },
+  {
+    "id": "c2",
+    "categoria": "Caffetteria",
+    "nome": "Cappuccino",
+    "descrizione": "Caffè espresso con schiuma di latte",
+    "prezzo": 1.50,
+    "immagine": "assets/img/cappuccino.jpg"
+  },
+  {
+    "id": "c3",
+    "categoria": "Caffetteria",
+    "nome": "Latte Macchiato",
+    "descrizione": "Latte caldo con una goccia di caffè",
+    "prezzo": 1.80,
+    "immagine": "assets/img/latte.jpg"
+  },
+  {
+    "id": "cl1",
+    "categoria": "Colazione",
+    "nome": "Cornetto Vuoto",
+    "descrizione": "Classico lievito sfogliato al burro",
+    "prezzo": 1.30,
+    "immagine": "assets/img/cornetto_vuoto.jpg"
+  },
+  {
+    "id": "cl2",
+    "categoria": "Colazione",
+    "nome": "Cornetto Nutella",
+    "descrizione": "Ripieno con abbondante crema alla nocciola",
+    "prezzo": 1.60,
+    "immagine": "assets/img/cornetto_nutella.jpg"
+  },
+  {
+    "id": "cl3",
+    "categoria": "Colazione",
+    "nome": "Cornetto Crema",
+    "descrizione": "Ripieno con crema pasticcera artigianale",
+    "prezzo": 1.50,
+    "immagine": "assets/img/cornetto_crema.jpg"
+  }
+]
