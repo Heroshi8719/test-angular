@@ -1,0 +1,15 @@
+.menu-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+p {
+  color: #666;
+}
