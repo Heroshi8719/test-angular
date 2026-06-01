@@ -1,0 +1,14 @@
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Kiosk Menu</h2>
+  </div>
+  <nav class="categories-nav">
+    @for (cat of elencoCategorie(); track cat.id) {
+      <app-category-card 
+        [categoria]="cat" 
+        [isAttiva]="idSelezionato() === cat.id"
+        (cliccata)="categoriaCambiata.emit($event)">
+      </app-category-card>
+    }
+  </nav>
+</aside>

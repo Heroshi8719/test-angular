@@ -1,0 +1,25 @@
+.category-btn {
+  width: 100%;
+  padding: 18px 20px;
+  background-color: transparent;
+  border: 2px solid #f5f5f5;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--kiosk-text);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-btn:hover {
+  background-color: #fafafa;
+  border-color: #e0e0e0;
+}
+
+.category-btn.active {
+  background-color: var(--kiosk-primary);
+  color: #ffffff;
+  border-color: var(--kiosk-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

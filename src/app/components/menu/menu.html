@@ -1,9 +1,25 @@
-<div class="menu-container">
-  <h2>Scegli il tuo ordine</h2>
+<div class="kiosk-layout">
   
-  <div class="grid-prodotti">
-    @for(prodotto of catalogoService.listino(); track prodotto.datiBruti.id) {
-      <app-product-card [item]="prodotto"></app-product-card>
-    }
-  </div>
+  <app-sidebar 
+    [elencoCategorie]="listaCategorie"
+    [idSelezionato]="categoriaCorrente()"
+    (categoriaCambiata)="aggiornaFiltro($event)">
+  </app-sidebar>
+
+  <main class="main-content">
+    <header class="content-header">
+      <h2>Seleziona i tuoi prodotti</h2>
+    </header>
+    
+    <div class="grid-prodotti">
+      @for(prodotto of prodottiFiltrati(); track prodotto.datiBruti.id) {
+        <app-product-card [item]="prodotto"></app-product-card>
+      } @empty {
+        <div class="empty-state">
+          <p>Nessun prodotto disponibile in questa categoria.</p>
+        </div>
+      }
+    </div>
+  </main>
+
 </div>

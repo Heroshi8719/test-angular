@@ -1,44 +1,49 @@
-.menu-container {
-  padding: 30px;
+.kiosk-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   background-color: var(--kiosk-bg-app);
-  min-height: 100vh;
   font-family: Arial, sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  overflow: hidden;
+}
+
+.content-header h2 {
+  font-size: 1.8rem;
+  margin: 0 0 25px 0;
   color: var(--kiosk-text);
 }
 
-h2 {
-  font-size: 2rem;
-  margin-bottom: 25px;
-  font-weight: 700;
-}
-
-/* Griglia reattiva: 3 prodotti fissi per linea */
 .grid-prodotti {
+  flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  
-  /* Limita l'altezza per attivare la scrollbar */
-  max-height: 70vh; 
-  overflow-y: auto; 
-  padding-right: 15px; /* Evita che la scrollbar tocchi le card */
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
-/* --- Personalizzazione della Scrollbar (Stile Kiosk Elegante) --- */
+.empty-state {
+  grid-column: span 3;
+  text-align: center;
+  padding: 60px;
+  color: #888888;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
 .grid-prodotti::-webkit-scrollbar {
-  width: 10px;
-}
-
-.grid-prodotti::-webkit-scrollbar-track {
-  background: #e0e0e0;
-  border-radius: 10px;
+  width: 8px;
 }
 
 .grid-prodotti::-webkit-scrollbar-thumb {
-  background: #b0b0b0;
-  border-radius: 10px;
-}
-
-.grid-prodotti::-webkit-scrollbar-thumb:hover {
-  background: #888888;
+  background: #cccccc;
+  border-radius: 4px;
 }
