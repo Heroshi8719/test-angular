@@ -1,15 +1,44 @@
 .menu-container {
-  background-color: #f8f9fa;
-  padding: 20px;
-  text-align: center;
-  border-radius: 8px;
+  padding: 30px;
+  background-color: var(--kiosk-bg-app);
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: var(--kiosk-text);
 }
 
 h2 {
-  margin-top: 0;
-  color: #333;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  font-weight: 700;
 }
 
-p {
-  color: #666;
+/* Griglia reattiva: 3 prodotti fissi per linea */
+.grid-prodotti {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 25px;
+  
+  /* Limita l'altezza per attivare la scrollbar */
+  max-height: 70vh; 
+  overflow-y: auto; 
+  padding-right: 15px; /* Evita che la scrollbar tocchi le card */
+}
+
+/* --- Personalizzazione della Scrollbar (Stile Kiosk Elegante) --- */
+.grid-prodotti::-webkit-scrollbar {
+  width: 10px;
+}
+
+.grid-prodotti::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+.grid-prodotti::-webkit-scrollbar-thumb {
+  background: #b0b0b0;
+  border-radius: 10px;
+}
+
+.grid-prodotti::-webkit-scrollbar-thumb:hover {
+  background: #888888;
 }

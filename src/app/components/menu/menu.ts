@@ -1,8 +1,11 @@
 import { Component, OnInit, inject, effect } from '@angular/core';
 import { CatalogoService } from '../../services/catalogo';
-
+import { ProductCardComponent } from '../product-card/product-card';
 @Component({
   selector: 'app-menu',
+  imports: [
+    ProductCardComponent // <-- 2. FONDAMENTALE: Deve stare qui dentro!
+  ],
   standalone: true,
   templateUrl: './menu.html', // <-- Punta al file HTML esterno
   styleUrl: './menu.css'      // <-- Punta al file CSS esterno (crealo vuoto)

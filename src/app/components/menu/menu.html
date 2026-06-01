@@ -1,4 +1,9 @@
 <div class="menu-container">
-  <h2> Componente Menu (Inizializzato)</h2>
-  <p>Controlla la console per vedere il JSON caricato.</p>
+  <h2>Scegli il tuo ordine</h2>
+  
+  <div class="grid-prodotti">
+    @for(prodotto of catalogoService.listino(); track prodotto.datiBruti.id) {
+      <app-product-card [item]="prodotto"></app-product-card>
+    }
+  </div>
 </div>
