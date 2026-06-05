@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --kiosk-primary: #d32f2f;
+    --kiosk-bg-card: #ffffff;
+    --kiosk-bg-app: #f4f6f8;
+    --kiosk-text: #333333;
+    --kiosk-radius: 12px;
+}

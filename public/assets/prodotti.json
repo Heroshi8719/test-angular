@@ -1,6 +1,7 @@
 [
   {
     "id": "b1",
+    "tipo": "singolo",
     "categoria": "Bevande",
     "nome": "Acqua Minerale",
     "descrizione": "Naturale o Frizzante 50cl",
@@ -9,6 +10,7 @@
   },
   {
     "id": "b2",
+    "tipo": "singolo",
     "categoria": "Bevande",
     "nome": "Coca Cola",
     "descrizione": "Lattina da 33cl",
@@ -17,6 +19,7 @@
   },
   {
     "id": "b3",
+    "tipo": "singolo",
     "categoria": "Bevande",
     "nome": "Aranciata",
     "descrizione": "Lattina da 33cl in vetro",
@@ -25,6 +28,7 @@
   },
   {
     "id": "c1",
+    "tipo": "singolo",
     "categoria": "Caffetteria",
     "nome": "Caffè Espresso",
     "descrizione": "Miscela 100% Arabica",
@@ -33,6 +37,7 @@
   },
   {
     "id": "c2",
+    "tipo": "singolo",
     "categoria": "Caffetteria",
     "nome": "Cappuccino",
     "descrizione": "Caffè espresso con schiuma di latte",
@@ -41,6 +46,7 @@
   },
   {
     "id": "c3",
+    "tipo": "singolo",
     "categoria": "Caffetteria",
     "nome": "Latte Macchiato",
     "descrizione": "Latte caldo con una goccia di caffè",
@@ -49,6 +55,7 @@
   },
   {
     "id": "cl1",
+    "tipo": "singolo",
     "categoria": "Colazione",
     "nome": "Cornetto Vuoto",
     "descrizione": "Classico lievito sfogliato al burro",
@@ -57,6 +64,7 @@
   },
   {
     "id": "cl2",
+    "tipo": "singolo",
     "categoria": "Colazione",
     "nome": "Cornetto Nutella",
     "descrizione": "Ripieno con abbondante crema alla nocciola",
@@ -65,10 +73,25 @@
   },
   {
     "id": "cl3",
+    "tipo": "singolo",
     "categoria": "Colazione",
     "nome": "Cornetto Crema",
     "descrizione": "Ripieno con crema pasticcera artigianale",
     "prezzo": 1.50,
     "immagine": "assets/img/cornetto_crema.jpg"
+  },
+  {
+    "id": "combo1",
+    "tipo": "oneclick",
+    "categoria": "Colazione",
+    "prezzo": 2.20,
+    "prodottiInterni": ["c1", "cl1"]
+  },
+    {
+    "id": "combo2",
+    "tipo": "oneclick",
+    "categoria": "Colazione",
+    "prezzo": 2.20,
+    "prodottiInterni": ["c2", "cl2"]
   }
 ]

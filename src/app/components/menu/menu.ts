@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, effect } from '@angular/core';
+import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CatalogoService } from '../../services/catalogo';
 
 @Component({
@@ -9,7 +9,7 @@ import { CatalogoService } from '../../services/catalogo';
 })
 export class MenuComponent implements OnInit {
   catalogoService = inject(CatalogoService);
-
+/*
   constructor() {
     // Il nostro test reactivo: scatta quando arrivano i dati
     effect(() => {
@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
       }
     });
   }
-
+*/
   ngOnInit() {
     this.catalogoService.caricaDati();
   }

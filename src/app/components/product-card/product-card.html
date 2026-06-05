@@ -1,0 +1,11 @@
+<div class="card" [class.combo-card]="isOneClick">
+    @if (isOneClick) {
+        <div class="badge-combo"> OFFERTA COMBO</div>
+    }
+
+    <img [src]="item().getImage()" alt="foto prodotto">
+    <h3>{{ item().getNome()}}</h3>
+
+    <p class="prezzo">$ {{ item().datiBruti.prezzo | number:'1.2-2'}}</p>
+    <button class="btn-aggiungi">Aggiungi</button>
+</div>
