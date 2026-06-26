@@ -5,6 +5,7 @@ export interface ProdottoJSON {
   nome?: string;
   immagine?: string;
   prezzo: number;
+  descrizione?: string; // 1. AGGIUNTO: opzionale, perfetto per la pagina di dettaglio
   prodottiInterni?: string[];
 }
 
@@ -13,6 +14,11 @@ export abstract class ElementoMenu {
 
   abstract getImage(): string;
   abstract getNome(): string;
+
+  // 2. AGGIUNTO: Scorciatoia pulita. Ora puoi scrivere "item.prezzo" ovunque nell'app!
+  get prezzo(): number {
+    return this.datiBruti.prezzo;
+  }
 }
 
 export class ProdottoSingolo extends ElementoMenu {
@@ -26,9 +32,12 @@ export class ProdottoSingolo extends ElementoMenu {
 
 export class ProdottoOneClick extends ElementoMenu {
   getImage(): string {
-    return 'assets/img/combo_icon.jpg'; 
+    // 3. MIGLIORATO: Se nel JSON metti una foto per la combo usa quella, altrimenti usa l'icona generica
+    return this.datiBruti.immagine || 'assets/img/combo_icon.jpg'; 
   }
+  
   getNome(): string {
-    return `Combo speciale (${this.datiBruti.prodottiInterni?.length || 2} Prodotti)`;
+    // 4. MIGLIORATO: Se nel JSON scrivi "Menu Colazione" usa quello, altrimenti usa il testo generico con il conto dei prodotti
+    return this.datiBruti.nome || `Combo speciale (${this.datiBruti.prodottiInterni?.length || 2} Prodotti)`;
   }
 }

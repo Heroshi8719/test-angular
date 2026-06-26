@@ -1,0 +1,42 @@
+<div class="detail-container">
+  
+  @if (prodotto(); as item) {
+    <button class="back-btn" routerLink="/">⬅ Torna al Menu</button>
+
+    <div class="detail-card">
+      <div class="image-section">
+        <img [src]="item.getImage()" [alt]="item.datiBruti.nome">
+      </div>
+
+      <div class="info-section">
+        <span class="category-badge">{{ item.datiBruti.categoria || 'Offerta' }}</span>
+        <h1 class="product-title">{{ item.datiBruti.nome }}</h1>
+        
+        <p class="product-description">
+          {{ item.datiBruti.descrizione || 'Preparato al momento con ingredienti freschi e selezionati di prima qualità.' }}
+        </p>
+
+        @if (item.datiBruti.tipo === 'oneclick') {
+          <div class="combo-info">
+            <h3>📦 Inclusi in questa offerta:</h3>
+            <ul>
+              @for (prodId of item.datiBruti.prodottiInterni; track prodId) {
+                <li>Codice Prodotto: {{ prodId }}</li>
+              }
+            </ul>
+          </div>
+        }
+
+        <div class="footer-section">
+          <div class="price-tag">{{ item.prezzo.toFixed(2) }} €</div>
+          <button class="cart-btn" (click)="aggiungiAlCarrello()">🛒 Aggiungi al Carrello</button>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="loading-state">
+      <p>Caricamento informazioni prodotto in corso...</p>
+    </div>
+  }
+
+</div>

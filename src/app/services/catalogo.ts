@@ -26,4 +26,8 @@ export class CatalogoService {
       error: (err) => console.error('Errore caricamento:', err)
     });
   }
+
+  getProdottoById(id: string): ElementoMenu | undefined {
+  return this.listino().find(p => p.datiBruti.id === id);
+}
 }

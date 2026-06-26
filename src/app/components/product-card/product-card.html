@@ -7,5 +7,7 @@
   <h3>{{ item().getNome() }}</h3>
 
   <p class="prezzo">€ {{ item().datiBruti.prezzo | number:'1.2-2' }}</p>
-  <button class="btn-aggiungi">Aggiungi</button>
+  <button class="btn-aggiungi" [routerLink]="['/prodotto', item().datiBruti.id]">
+  Dettaglio
+</button>
 </div>

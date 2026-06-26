@@ -1,13 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { MenuComponent } from './components/menu/menu';
+import { RouterOutlet } from '@angular/router'; // <-- 1. IMPORTA IL ROUTER OUTLET
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,
-    MenuComponent
-  ],
+  standalone: true,
+  // 2. SOSTITUISCI MenuComponent con RouterOutlet negli imports
+  imports: [RouterOutlet], 
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
