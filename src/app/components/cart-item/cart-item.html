@@ -1,0 +1,12 @@
+<div class="cart-item-row">
+  <div class="product-info">
+    <span class="title">{{ item().prodotto.getNome() }}</span>
+    <span class="description">{{ item().prodotto.datiBruti.descrizione || 'Ricetta classica del Kiosk.' }}</span>
+  </div>
+  
+  <app-quantity [valore]="item().quantita" [min]="0" (cambio)="aggiorna($event)"></app-quantity>
+  
+  <div class="total-price">
+    {{ (item().prodotto.prezzo * item().quantita).toFixed(2) }} €
+  </div>
+</div>

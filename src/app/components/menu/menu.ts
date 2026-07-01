@@ -1,17 +1,21 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { RouterLink } from '@angular/router'; // <-- 1. AGGIUNTO PER IL TASTO DEL CARRELLO
 import { CatalogoService } from '../../services/catalogo';
+import { CartService } from '../../services/cart';
 import { ProductCardComponent } from '../product-card/product-card';
-import { SidebarComponent } from '../sidebar/sidebar'; // <-- Importa la Sidebar!
+import { SidebarComponent } from '../sidebar/sidebar';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [ProductCardComponent, SidebarComponent], // <-- Inseriti qui i sotto-componenti
+  // 3. AGGIUNTO RouterLink NEGLI IMPORTS DEL COMPONENTE
+  imports: [ProductCardComponent, SidebarComponent, RouterLink], 
   templateUrl: './menu.html',
   styleUrl: './menu.css'
 })
 export class MenuComponent implements OnInit {
   catalogoService = inject(CatalogoService);
+  protected cartService = inject(CartService); // <-- 4. INIETTATO IL CARRELLO (protected così lo legge l'HTML)
 
   // Dati delle categorie centralizzati nel componente principale
   listaCategorie = [

@@ -47,3 +47,49 @@
   background: #cccccc;
   border-radius: 4px;
 }
+
+/* Assicurati che la griglia abbia spazio in fondo per non far finire i prodotti sotto il tasto carrello */
+.grid-prodotti {
+  /* ... mantieni le proprietà scritte dallo studente (grid, template-columns, gap...) ... */
+  padding-bottom: 110px; /* AGGIUNGI SOLO QUESTO SPAZIO IN FONDO */
+}
+
+/* Lo stile del pulsante carrello fisso per il vostro Kiosk */
+.kiosk-footer {
+  position: fixed;
+  bottom: 25px; 
+  left: 5%;
+  width: 90%;
+  background-color: #ff5722;
+  color: white;
+  padding: 18px 0;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255, 87, 34, 0.4);
+  z-index: 999;
+  transition: transform 0.2s;
+}
+
+.kiosk-footer:hover {
+  transform: scale(1.02);
+}
+
+.cart-summary-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.cart-badge {
+  background-color: white;
+  color: #ff5722;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}

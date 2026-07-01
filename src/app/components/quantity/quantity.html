@@ -1,0 +1,5 @@
+<div class="quantity-selector">
+  <button class="arrow-btn" (click)="decrementa()" [disabled]="valore() <= min()">◀</button>
+  <span class="quantity-number">{{ valore() }}</span>
+  <button class="arrow-btn" (click)="incrementa()">▶</button>
+</div>

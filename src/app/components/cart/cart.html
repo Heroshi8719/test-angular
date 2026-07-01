@@ -1,0 +1,16 @@
+<div class="cart-page-container">
+  <div class="cart-header">
+    <button class="back-home-btn" routerLink="/">◀ Continua gli acquisti</button>
+    <h1>Il tuo Ordine</h1>
+  </div>
+
+  <div class="cart-items-wrapper">
+    @for (elemento of cartService.carrello(); track elemento.prodotto.datiBruti.id) {
+      <app-cart-item [item]="elemento"></app-cart-item>
+    } @empty {
+      <div class="empty-cart">
+        <p>Il carrello è vuoto. Torna al catalogo per selezionare i prodotti.</p>
+      </div>
+    }
+  </div>
+</div>

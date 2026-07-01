@@ -22,4 +22,13 @@
     </div>
   </main>
 
+  <div class="kiosk-footer" [routerLink]="['/carrello']">
+    <div class="cart-summary-btn">
+      <span class="cart-icon">🛒 Vedi Carrello dell'Ordine</span>
+      @if (cartService.totalePezzi() > 0) {
+        <span class="cart-badge">{{ cartService.totalePezzi() }}</span>
+      }
+    </div>
+  </div>
+
 </div>

@@ -1,0 +1,58 @@
+.cart-page-container {
+  width: 100vw;
+  height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.back-home-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+/* Limitazione altezza a 4 elementi medi (110px l'uno) per bloccare l'interfaccia */
+.cart-items-wrapper {
+  max-height: 440px; 
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 4px;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 60px;
+  font-size: 1.3rem;
+  color: #888;
+  background: white;
+  border-radius: 20px;
+}

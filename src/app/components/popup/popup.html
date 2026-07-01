@@ -1,0 +1,9 @@
+@if (cartService.popupMessaggio(); as msg) {
+  <div class="popup-overlay" (click)="cartService.chiudiPopup()">
+    <div class="popup-box">
+      <div class="icon">🛒</div>
+      <p class="message">{{ msg }}</p>
+      <span class="close-hint">Tocca ovunque per chiudere</span>
+    </div>
+  </div>
+}
