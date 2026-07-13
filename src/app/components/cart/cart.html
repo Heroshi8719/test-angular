@@ -13,4 +13,13 @@
       </div>
     }
   </div>
+
+  @if (cartService.totalePezzi() > 0) {
+    <div class="cart-actions-bar">
+      <button class="checkout-btn" [routerLink]="['/pagamento']">
+        💳 Procedi al Pagamento
+      </button>
+    </div>
+  }
 </div>
+

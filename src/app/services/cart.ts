@@ -60,4 +60,9 @@ export class CartService {
   chiudiPopup() {
     this.popupMessaggio.set(null);
   }
+
+  svuotaCarrello() {
+  this.carrello.set([]);
+  
+}
 }

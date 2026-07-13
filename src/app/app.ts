@@ -1,17 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router'; // <-- 1. IMPORTA IL ROUTER OUTLET
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { PopupComponent } from './components/popup/popup';
+import { KioskTimeoutService } from './services/kiosk-timeout';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  // 2. SOSTITUISCI MenuComponent con RouterOutlet negli imports
-  imports: [RouterOutlet,
-    PopupComponent
-  ], 
+  imports: [RouterOutlet, PopupComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('app-socket');
+export class App implements OnInit {
+  // 2. INIETTA IL MOTORE DI TIMEOUT
+  private timeoutService = inject(KioskTimeoutService); 
+
+  ngOnInit() {
+    // 3. ACCENDI IL MONITORAGGIO GLOBALE ALL'AVVIO DEL TOTEM
+    this.timeoutService.iniziaMonitoraggio();
+  }
 }
