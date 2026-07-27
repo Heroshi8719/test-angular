@@ -1,0 +1,28 @@
+@if (timeoutService.mostraPopup()) {
+  <div class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-icon">⏳</div>
+      <h2 class="modal-title">Sei ancora lì?</h2>
+      
+      <p class="modal-message">
+        Sei inattivo da <strong>{{ timeoutService.SECONDI_INATTIVITA }} secondi</strong>.
+      </p>
+
+      <div class="countdown-circle">
+        <span class="countdown-number">{{ timeoutService.secondiRimanenti() }}</span>
+        <span class="countdown-label">secondi</span>
+      </div>
+
+      <p class="warning-text">Verrai reindirizzato alla Home se non rispondi.</p>
+
+      <div class="modal-actions">
+        <button class="btn btn-stay" (click)="timeoutService.continuaSessione()">
+          👆 Continua l'ordine
+        </button>
+        <button class="btn btn-home" (click)="timeoutService.tornaAllaHome()">
+          🏠 Torna subito alla Home
+        </button>
+      </div>
+    </div>
+  </div>
+}

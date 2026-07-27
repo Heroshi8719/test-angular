@@ -22,6 +22,16 @@ export class CartService {
     this.carrello().reduce((acc, item) => acc + item.quantita, 0)
   );
 
+  // 2. AGGIUNTO: Calcolo del prezzo totale (formattato a due cifre decimali)
+  totalePrezzo = computed(() => {
+    const totale = this.carrello().reduce((acc, item) => {
+      const prezzo = item.prodotto?.datiBruti?.prezzo ?? item.prodotto?.prezzo ?? 0;
+      return acc + (prezzo * item.quantita);
+    }, 0);
+    
+    return totale.toFixed(2);
+  });
+
   aggiungi(prodotto: ElementoMenu, quantita: number) {
     this.carrello.update(attuali => {
       const esistente = attuali.find(item => item.prodotto.datiBruti.id === prodotto.datiBruti.id);

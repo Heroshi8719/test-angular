@@ -1,4 +1,4 @@
-import { Injectable, inject, NgZone } from '@angular/core';
+import { Injectable, inject, NgZone, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from './cart';
 
@@ -10,49 +10,92 @@ export class KioskTimeoutService {
   private cartService = inject(CartService);
   private zone = inject(NgZone);
 
-  private timer: any;
-  private readonly TEMPO_LIMITE = 5000; // 5000 millisecondi = 5 secondi
+  // CONFIGURAZIONE TEMPI (in secondi)
+  readonly SECONDI_INATTIVITA = 10; // Tempo prima di mostrare il popup
+  readonly SECONDI_COUNTDOWN = 30;  // Tempo di attesa del popup prima del reset
+
+  // STATI REATTIVI
+  mostraPopup = signal<boolean>(false);
+  secondiRimanenti = signal<number>(this.SECONDI_COUNTDOWN);
+
+  private timerInattivita: any;
+  private intervalCountdown: any;
 
   iniziaMonitoraggio() {
     const eventiInterazione = ['click', 'mousemove', 'keypress', 'touchstart'];
     
-    // Agganciamo gli ascoltatori globali alla finestra del browser
     eventiInterazione.forEach(evento => {
-      window.addEventListener(evento, () => this.resettaTimer());
+      window.addEventListener(evento, () => this.gestisciInterazioneUtente());
     });
 
-    // Fai partire il primo countdown all'avvio del Kiosk
-    this.resettaTimer();
+    this.resettaTimerInattivita();
   }
 
-  private resettaTimer() {
-    if (this.timer) {
-      clearTimeout(this.timer);
+  private gestisciInterazioneUtente() {
+    // Se il popup NON è aperto, ogni gesto azzera il timer di inattività
+    if (!this.mostraPopup()) {
+      this.resettaTimerInattivita();
+    }
+  }
+
+  resettaTimerInattivita() {
+    this.pulisciTuttiITimer();
+
+    // Se l'utente è già in Home, non avviamo il timeout
+    if (this.isHomeUrl()) {
+      return;
     }
 
-    /* Performance Pro-Tip: Eseguiamo il timer fuori da Angular (runOutsideAngular)
-      per evitare che i continui movimenti del mouse o tocchi sullo schermo 
-      sovraccarichino la CPU del Totem con inutili calcoli di rendering.
-    */
     this.zone.runOutsideAngular(() => {
-      this.timer = setTimeout(() => {
-        // Rientriamo nel flusso di Angular solo quando il tempo è scaduto davvero
+      this.timerInattivita = setTimeout(() => {
         this.zone.run(() => {
-          this.reindirizzaAHome();
+          this.apriPopupTimeout();
         });
-      }, this.TEMPO_LIMITE);
+      }, this.SECONDI_INATTIVITA * 1000);
     });
   }
 
-  private reindirizzaAHome() {
-    // Se l'utente si trova già nella Home, non serve forzare il reindirizzamento
-    if (this.router.url !== '/' && this.router.url !== '/home') {
-      
-      // OPZIONALE MA CONSIGLIATO PER I TOTEM: 
-      // Se l'utente abbandona la postazione, svuotiamo il carrello per il cliente successivo
-      this.cartService.svuotaCarrello();
+  private apriPopupTimeout() {
+    if (this.isHomeUrl()) return;
 
-      this.router.navigate(['/']);
-    }
+    this.secondiRimanenti.set(this.SECONDI_COUNTDOWN);
+    this.mostraPopup.set(true);
+
+    // Avvia il countdown da 30 a 0 secondi
+    this.zone.runOutsideAngular(() => {
+      this.intervalCountdown = setInterval(() => {
+        this.zone.run(() => {
+          const nuovoValore = this.secondiRimanenti() - 1;
+          this.secondiRimanenti.set(nuovoValore);
+
+          if (nuovoValore <= 0) {
+            this.tornaAllaHome();
+          }
+        });
+      }, 1000);
+    });
+  }
+
+  // AZIONE 1: Chiude il popup e fa ripartire il timer da zero
+  continuaSessione() {
+    this.mostraPopup.set(false);
+    this.resettaTimerInattivita();
+  }
+
+  // AZIONE 2: Svuota carrello, chiude popup e naviga alla Home
+  tornaAllaHome() {
+    this.pulisciTuttiITimer();
+    this.mostraPopup.set(false);
+    this.cartService.svuotaCarrello();
+    this.router.navigate(['/']);
+  }
+
+  private pulisciTuttiITimer() {
+    if (this.timerInattivita) clearTimeout(this.timerInattivita);
+    if (this.intervalCountdown) clearInterval(this.intervalCountdown);
+  }
+
+  private isHomeUrl(): boolean {
+    return this.router.url === '/' || this.router.url === '/home';
   }
 }

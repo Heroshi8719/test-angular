@@ -37,7 +37,7 @@ export class ProductDetailComponent implements OnInit {
     const p = this.prodotto();
     if (p) {
       this.cartService.aggiungi(p, this.quantitaSelezionata());
-      this.router.navigate(['/']);
+      this.router.navigate(['/menu']);
     }
   }
 }

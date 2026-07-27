@@ -1,21 +1,50 @@
-<div class="cart-page-container">
-  <div class="cart-header">
-    <button class="back-home-btn" routerLink="/">◀ Continua gli acquisti</button>
-    <h1>Il tuo Ordine</h1>
-  </div>
+<div class="cart-container">
+  <header class="cart-header">
+    <button class="back-btn" [routerLink]="['/menu']">← Torna al Menu</button>
+    <h2>Il tuo Carrello</h2>
+  </header>
 
   <div class="cart-items-wrapper">
     @for (elemento of cartService.carrello(); track elemento.prodotto.datiBruti.id) {
       <app-cart-item [item]="elemento"></app-cart-item>
     } @empty {
       <div class="empty-cart">
-        <p>Il carrello è vuoto. Torna al catalogo per selezionare i prodotti.</p>
+        <p>Il carrello è vuoto. Torna al menu per aggiungere gustose novità!</p>
       </div>
     }
   </div>
 
+  <!-- SEZIONE UPSELLING -->
+  @if (prodottiUpsell().length > 0 ) {
+    <section class="upsell-section">
+      <h3 class="upsell-title">Aggiungi qualcosa al volo:</h3>
+      
+      <div class="upsell-slider">
+        @for (prodotto of prodottiUpsell(); track prodotto.datiBruti.id) {
+          <div class="upsell-card">
+            <img 
+              [src]="prodotto.datiBruti.immagine" 
+              [alt]="prodotto.datiBruti.nome" 
+              class="upsell-img" 
+            />
+            <div class="upsell-info">
+              <span class="upsell-name">{{ prodotto.datiBruti.nome }}</span>
+              <span class="upsell-price">€{{ prodotto.datiBruti.prezzo }}</span>
+            </div>
+            <button class="upsell-add-btn" (click)="aggiungiDaUpsell(prodotto)">
+              + Aggiungi
+            </button>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
   @if (cartService.totalePezzi() > 0) {
     <div class="cart-actions-bar">
+      <div class="total-display">
+        Totale: <strong>€{{ cartService.totalePrezzo() }}</strong>
+      </div>
       <button class="checkout-btn" [routerLink]="['/pagamento']">
         💳 Procedi al Pagamento
       </button>
